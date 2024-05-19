@@ -2,8 +2,8 @@ package nex
 
 import (
 	"github.com/PretendoNetwork/nex-protocols-go/subscription"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
-	nex_subscription "github.com/PretendoNetwork/pokemon-gen6/nex/subscription"
+	"github.com/keikei14/pokemon-gen7/globals"
+	nex_subscription "github.com/keikei14/pokemon-gen7/nex/subscription"
 )
 
 func registerSecureServerNEXProtocols() {

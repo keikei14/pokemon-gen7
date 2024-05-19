@@ -6,7 +6,7 @@ import (
 
 	_ "github.com/lib/pq"
 
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
+	"github.com/keikei14/pokemon-gen7/globals"
 )
 
 var Postgres *sql.DB
@@ -14,7 +14,7 @@ var Postgres *sql.DB
 func ConnectPostgres() {
 	var err error
 
-	Postgres, err = sql.Open("postgres", os.Getenv("PN_POKEGEN6_POSTGRES_URI"))
+	Postgres, err = sql.Open("postgres", os.Getenv("PN_POKEGEN7_POSTGRES_URI"))
 	if err != nil {
 		globals.Logger.Critical(err.Error())
 	}

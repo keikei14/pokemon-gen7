@@ -4,8 +4,8 @@ import (
 	"github.com/PretendoNetwork/nex-go"
 	ranking "github.com/PretendoNetwork/nex-protocols-go/ranking"
 	ranking_types "github.com/PretendoNetwork/nex-protocols-go/ranking/types"
-	"github.com/PretendoNetwork/pokemon-gen6/database"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
+	"github.com/keikei14/pokemon-gen7/database"
+	"github.com/keikei14/pokemon-gen7/globals"
 )
 
 func UploadScore(err error, client *nex.Client, callID uint32, scoreData *ranking_types.RankingScoreData, uniqueID uint64) {

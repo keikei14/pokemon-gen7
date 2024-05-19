@@ -1,6 +1,6 @@
 package database
 
-import "github.com/PretendoNetwork/pokemon-gen6/globals"
+import "github.com/keikei14/pokemon-gen7/globals"
 
 func initPostgres() {
 	var err error

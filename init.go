@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	pb "github.com/PretendoNetwork/grpc-go/account"
-	"github.com/PretendoNetwork/pokemon-gen6/database"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
+	"github.com/keikei14/pokemon-gen7/database"
+	"github.com/keikei14/pokemon-gen7/globals"
 	"github.com/PretendoNetwork/plogger-go"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
@@ -26,77 +26,77 @@ func init() {
 		globals.Logger.Warning("Error loading .env file")
 	}
 
-	postgresURI := os.Getenv("PN_POKEGEN6_POSTGRES_URI")
-	kerberosPassword := os.Getenv("PN_POKEGEN6_KERBEROS_PASSWORD")
-	authenticationServerPort := os.Getenv("PN_POKEGEN6_AUTHENTICATION_SERVER_PORT")
-	secureServerHost := os.Getenv("PN_POKEGEN6_SECURE_SERVER_HOST")
-	secureServerPort := os.Getenv("PN_POKEGEN6_SECURE_SERVER_PORT")
-	accountGRPCHost := os.Getenv("PN_POKEGEN6_ACCOUNT_GRPC_HOST")
-	accountGRPCPort := os.Getenv("PN_POKEGEN6_ACCOUNT_GRPC_PORT")
-	accountGRPCAPIKey := os.Getenv("PN_POKEGEN6_ACCOUNT_GRPC_API_KEY")
+	postgresURI := os.Getenv("PN_POKEGEN7_POSTGRES_URI")
+	kerberosPassword := os.Getenv("PN_POKEGEN7_KERBEROS_PASSWORD")
+	authenticationServerPort := os.Getenv("PN_POKEGEN7_AUTHENTICATION_SERVER_PORT")
+	secureServerHost := os.Getenv("PN_POKEGEN7_SECURE_SERVER_HOST")
+	secureServerPort := os.Getenv("PN_POKEGEN7_SECURE_SERVER_PORT")
+	accountGRPCHost := os.Getenv("PN_POKEGEN7_ACCOUNT_GRPC_HOST")
+	accountGRPCPort := os.Getenv("PN_POKEGEN7_ACCOUNT_GRPC_PORT")
+	accountGRPCAPIKey := os.Getenv("PN_POKEGEN7_ACCOUNT_GRPC_API_KEY")
 
 	if strings.TrimSpace(postgresURI) == "" {
-		globals.Logger.Error("PN_POKEGEN6_POSTGRES_URI environment variable not set")
+		globals.Logger.Error("PN_POKEGEN7_POSTGRES_URI environment variable not set")
 		os.Exit(0)
 	}
 
 	if strings.TrimSpace(kerberosPassword) == "" {
-		globals.Logger.Warningf("PN_POKEGEN6_KERBEROS_PASSWORD environment variable not set. Using default password: %q", globals.KerberosPassword)
+		globals.Logger.Warningf("PN_POKEGEN7_KERBEROS_PASSWORD environment variable not set. Using default password: %q", globals.KerberosPassword)
 	} else {
 		globals.KerberosPassword = kerberosPassword
 	}
 
 	if strings.TrimSpace(authenticationServerPort) == "" {
-		globals.Logger.Error("PN_POKEGEN6_AUTHENTICATION_SERVER_PORT environment variable not set")
+		globals.Logger.Error("PN_POKEGEN7_AUTHENTICATION_SERVER_PORT environment variable not set")
 		os.Exit(0)
 	}
 
 	if port, err := strconv.Atoi(authenticationServerPort); err != nil {
-		globals.Logger.Errorf("PN_POKEGEN6_AUTHENTICATION_SERVER_PORT is not a valid port. Expected 0-65535, got %s", authenticationServerPort)
+		globals.Logger.Errorf("PN_POKEGEN7_AUTHENTICATION_SERVER_PORT is not a valid port. Expected 0-65535, got %s", authenticationServerPort)
 		os.Exit(0)
 	} else if port < 0 || port > 65535 {
-		globals.Logger.Errorf("PN_POKEGEN6_AUTHENTICATION_SERVER_PORT is not a valid port. Expected 0-65535, got %s", authenticationServerPort)
+		globals.Logger.Errorf("PN_POKEGEN7_AUTHENTICATION_SERVER_PORT is not a valid port. Expected 0-65535, got %s", authenticationServerPort)
 		os.Exit(0)
 	}
 
 	if strings.TrimSpace(secureServerHost) == "" {
-		globals.Logger.Error("PN_POKEGEN6_SECURE_SERVER_HOST environment variable not set")
+		globals.Logger.Error("PN_POKEGEN7_SECURE_SERVER_HOST environment variable not set")
 		os.Exit(0)
 	}
 
 	if strings.TrimSpace(secureServerPort) == "" {
-		globals.Logger.Error("PN_POKEGEN6_SECURE_SERVER_PORT environment variable not set")
+		globals.Logger.Error("PN_POKEGEN7_SECURE_SERVER_PORT environment variable not set")
 		os.Exit(0)
 	}
 
 	if port, err := strconv.Atoi(secureServerPort); err != nil {
-		globals.Logger.Errorf("PN_POKEGEN6_SECURE_SERVER_PORT is not a valid port. Expected 0-65535, got %s", secureServerPort)
+		globals.Logger.Errorf("PN_POKEGEN7_SECURE_SERVER_PORT is not a valid port. Expected 0-65535, got %s", secureServerPort)
 		os.Exit(0)
 	} else if port < 0 || port > 65535 {
-		globals.Logger.Errorf("PN_POKEGEN6_SECURE_SERVER_PORT is not a valid port. Expected 0-65535, got %s", secureServerPort)
+		globals.Logger.Errorf("PN_POKEGEN7_SECURE_SERVER_PORT is not a valid port. Expected 0-65535, got %s", secureServerPort)
 		os.Exit(0)
 	}
 
 	if strings.TrimSpace(accountGRPCHost) == "" {
-		globals.Logger.Error("PN_POKEGEN6_ACCOUNT_GRPC_HOST environment variable not set")
+		globals.Logger.Error("PN_POKEGEN7_ACCOUNT_GRPC_HOST environment variable not set")
 		os.Exit(0)
 	}
 
 	if strings.TrimSpace(accountGRPCPort) == "" {
-		globals.Logger.Error("PN_POKEGEN6_ACCOUNT_GRPC_PORT environment variable not set")
+		globals.Logger.Error("PN_POKEGEN7_ACCOUNT_GRPC_PORT environment variable not set")
 		os.Exit(0)
 	}
 
 	if port, err := strconv.Atoi(accountGRPCPort); err != nil {
-		globals.Logger.Errorf("PN_POKEGEN6_ACCOUNT_GRPC_PORT is not a valid port. Expected 0-65535, got %s", accountGRPCPort)
+		globals.Logger.Errorf("PN_POKEGEN7_ACCOUNT_GRPC_PORT is not a valid port. Expected 0-65535, got %s", accountGRPCPort)
 		os.Exit(0)
 	} else if port < 0 || port > 65535 {
-		globals.Logger.Errorf("PN_POKEGEN6_ACCOUNT_GRPC_PORT is not a valid port. Expected 0-65535, got %s", accountGRPCPort)
+		globals.Logger.Errorf("PN_POKEGEN7_ACCOUNT_GRPC_PORT is not a valid port. Expected 0-65535, got %s", accountGRPCPort)
 		os.Exit(0)
 	}
 
 	if strings.TrimSpace(accountGRPCAPIKey) == "" {
-		globals.Logger.Warning("Insecure gRPC server detected. PN_POKEGEN6_ACCOUNT_GRPC_API_KEY environment variable not set")
+		globals.Logger.Warning("Insecure gRPC server detected. PN_POKEGEN7_ACCOUNT_GRPC_API_KEY environment variable not set")
 	}
 
 	globals.GRPCAccountClientConnection, err = grpc.Dial(fmt.Sprintf("%s:%s", accountGRPCHost, accountGRPCPort), grpc.WithTransportCredentials(insecure.NewCredentials()))

@@ -5,7 +5,7 @@ import (
 	"os"
 
 	nex "github.com/PretendoNetwork/nex-go"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
+	"github.com/keikei14/pokemon-gen7/globals"
 )
 
 var serverBuildString string
@@ -20,12 +20,12 @@ func StartAuthenticationServer() {
 		Patch: 0,
 	})
 	globals.AuthenticationServer.SetKerberosPassword(globals.KerberosPassword)
-	globals.AuthenticationServer.SetAccessKey("876138df")
+	globals.AuthenticationServer.SetAccessKey("086f9d28")
 
 	globals.AuthenticationServer.On("Data", func(packet *nex.PacketV1) {
 		request := packet.RMCRequest()
 
-		fmt.Println("==Pokemon X/Y/OR/AS (Gen 6) - Auth==")
+		fmt.Println("==Pokemon S/M/US/UM (Gen 7) - Auth==")
 		fmt.Printf("Protocol ID: %#v\n", request.ProtocolID())
 		fmt.Printf("Method ID: %#v\n", request.MethodID())
 		fmt.Println("===============")
@@ -33,5 +33,5 @@ func StartAuthenticationServer() {
 
 	registerCommonAuthenticationServerProtocols()
 
-	globals.AuthenticationServer.Listen(fmt.Sprintf(":%s", os.Getenv("PN_POKEGEN6_AUTHENTICATION_SERVER_PORT")))
+	globals.AuthenticationServer.Listen(fmt.Sprintf(":%s", os.Getenv("PN_POKEGEN7_AUTHENTICATION_SERVER_PORT")))
 }

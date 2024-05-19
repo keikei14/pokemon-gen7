@@ -4,7 +4,7 @@ import (
 	nex "github.com/PretendoNetwork/nex-go"
 	"encoding/hex"
 	"fmt"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
+	"github.com/keikei14/pokemon-gen7/globals"
 	"github.com/PretendoNetwork/nex-protocols-go/subscription"
 )
 

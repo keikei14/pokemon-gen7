@@ -6,7 +6,7 @@ import (
 	matchmakingext "github.com/PretendoNetwork/nex-protocols-common-go/matchmaking-ext"
 	matchmakeextension "github.com/PretendoNetwork/nex-protocols-common-go/matchmake-extension"
 	nattraversal "github.com/PretendoNetwork/nex-protocols-common-go/nat-traversal"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
+	"github.com/keikei14/pokemon-gen7/globals"
 )
 
 func registerCommonSecureServerProtocols() {

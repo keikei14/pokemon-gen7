@@ -5,7 +5,7 @@ import (
 
 	nex "github.com/PretendoNetwork/nex-go"
 	ticket_granting "github.com/PretendoNetwork/nex-protocols-common-go/ticket-granting"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
+	"github.com/keikei14/pokemon-gen7/globals"
 )
 
 func registerCommonAuthenticationServerProtocols() {
@@ -13,7 +13,7 @@ func registerCommonAuthenticationServerProtocols() {
 
 	secureStationURL := nex.NewStationURL("")
 	secureStationURL.SetScheme("prudps")
-	secureStationURL.SetAddress(os.Getenv("PN_POKEGEN6_SECURE_SERVER_HOST"))
+	secureStationURL.SetAddress(os.Getenv("PN_POKEGEN7_SECURE_SERVER_HOST"))
 	secureStationURL.SetPort(61005)
 	secureStationURL.SetCID(1)
 	secureStationURL.SetPID(2)

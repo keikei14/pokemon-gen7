@@ -4,8 +4,8 @@ import (
 	"database/sql"
 
 	ranking_types "github.com/PretendoNetwork/nex-protocols-go/ranking/types"
-	"github.com/PretendoNetwork/pokemon-gen6/globals"
-	"github.com/PretendoNetwork/pokemon-gen6/types"
+	"github.com/keikei14/pokemon-gen7/globals"
+	"github.com/keikei14/pokemon-gen7/types"
 )
 
 func GetRankingsByCategoryAndRankingOrderParam(category uint32, rankingOrderParam *ranking_types.RankingOrderParam) (error, []*ranking_types.RankingRankData) {

@@ -3,7 +3,7 @@ package main
 import (
 	"sync"
 
-	"github.com/PretendoNetwork/pokemon-gen6/nex"
+	"github.com/keikei14/pokemon-gen7/nex"
 )
 
 var wg sync.WaitGroup
