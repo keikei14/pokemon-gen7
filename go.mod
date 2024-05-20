@@ -1,4 +1,4 @@
-module github.com/PretendoNetwork/pokemon-gen6
+module github.com/keikei14/pokemon-gen7
 
 go 1.19
 
